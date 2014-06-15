@@ -1,0 +1,52 @@
+html, body{
+	width:100%;
+	height:100%;
+	margin:0px;
+	padding:0px;
+	background-color:#40424f;
+}
+
+.global{
+	width:100%;
+	padding-left:40px;
+	padding-right:40px;
+	box-sizing:border-box;
+	position:relative;
+	height:100%;
+}
+.wrap{
+	width:100%;
+	background-color:#fafaf0;
+	background:url(../images/face.jpg) no-repeat bottom right fixed #fafaf0;
+}
+.content{
+	width:100%;
+	max-width:600px;
+	margin:0 auto;
+	height:3000px;
+	background-color:#F00;
+	margin-top:40px;
+	z-index:1000;
+}
+
+.header{
+	height:40px;
+	width:100%;
+	position:fixed;
+	top:0px;
+	left:0px;
+	background-color:#40424f;
+	z-index:9000;
+}
+.footer{
+	height:40px;
+	width:100%;
+	position:fixed;
+	bottom:0px;
+	left:0px;
+	background-color:#40424f;
+	z-index:9000;
+}
+.nicescroll-rails{
+	z-index:9999 !important;
+}
