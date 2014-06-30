@@ -6,6 +6,19 @@ html, body{
 	background-color:#40424f;
 }
 
+.clear{
+	clear:both;
+}
+.nicescroll-rails div{
+	width:10px !important;
+	border:none !important;
+	border-radius: 0px !important;
+	background-color:#f36750 !important;
+}
+
+/* =========================== */
+/*  CONTENT */
+/* =========================== */
 .global{
 	width:100%;
 	padding-left:40px;
@@ -14,6 +27,12 @@ html, body{
 	position:relative;
 	height:100%;
 }
+@media only screen and (max-width: 750px) {
+	.global{
+		padding-left:0px;
+		padding-right:0px;
+	}
+}
 .wrap{
 	width:100%;
 	background-color:#fafaf0;
@@ -21,14 +40,333 @@ html, body{
 }
 .content{
 	width:100%;
-	max-width:600px;
+	max-width:640px;
 	margin:0 auto;
-	height:3000px;
-	background-color:#F00;
-	margin-top:40px;
+	padding-top:40px;
 	z-index:1000;
 }
 
+/* Section 1 - Intro*/
+.section-intro{
+	font-family: 'whitney_blackregular';
+	margin-top:22px;
+	min-height:1000px;
+}
+
+.main-title{
+	font-family: 'whitney_blackregular';
+	font-size:52px;
+	text-align:center;
+	text-transform:uppercase;
+	color:#41414e;
+	line-height:70px;
+}
+.main-title span.large{
+	font-size:102px;
+}
+
+.navig-wrap{
+	display: table;
+    font-family: 'whitney_bookregular';
+    font-size: 16px;
+    margin: 0 auto;
+	margin-top:20px;
+    position: relative;
+}
+a.navig-item{
+	text-transform:uppercase;
+	text-align:center;
+	float:left;
+	margin-left:12px;
+	margin-right:12px;
+	color:#41414e;
+	text-decoration:none;
+	line-height:16px;
+}
+a.navig-item:hover{
+	color:#f36750;
+}
+
+a.navig-item.active{
+	font-family: 'whitney_blackregular';
+}
+
+.main-video{
+	max-width:640px;
+	margin-top:80px;
+	float: none;
+    clear: both;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
+}
+.main-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.down-arrow-circle{
+	height:60px;
+	width:60px;
+	margin:0 auto;
+	margin-top:80px;
+	border-radius:100%;
+	position:relative;
+	background-color:#40424f;
+}
+.down-arrow-circle:hover{
+	cursor:pointer;
+	background-color:#f36750;
+}
+.down-arrow-icon{
+	height:60px;
+	width:60px;
+	position:absolute;
+	top:0px;
+	left:0px;
+	background:url(../images/arrow-more.png) center 26px no-repeat;
+}
+
+/* Section 2 - Spectacles */
+.section-content{
+	width:60%;
+	margin-left:10%;
+	min-height:800px;
+	padding-top:200px;
+}
+.section-title{
+	font-size:102px;
+	font-family: 'whitney_blackregular';
+	text-transform:uppercase;
+	color:#40424f;
+	margin-bottom:20px;
+}
+.show-wrap{
+	width:100%;
+	position:relative;
+}
+.show-row{
+	width:100%;
+	max-width:700px;
+	padding-top:20px;
+	padding-bottom:20px;
+	border-bottom:1px solid #41414e;
+	display:table;
+}
+.show-row:last-child{
+	border-bottom:none;
+}
+.show-date{
+	width:120px;
+	text-align:center;
+	font-family: 'whitney_blackregular';
+	color:#40424f;
+	display:table-cell;
+}
+span.topdate{
+	display: block;
+    font-size: 38px;
+    height: 28px;
+    line-height: 26px;
+}
+span.middate{
+	text-transform:uppercase;
+	font-size:20px;
+}
+span.botdate{
+	display: block;
+    font-size: 35px;
+    height: 24px;
+    line-height: 22px;
+}
+.show-text{
+	padding-left:60px;
+	display:table-cell;
+	vertical-align:top;
+}
+.show-text-title{
+	font-family: 'whitney_blackregular';
+	font-size:18px;
+	text-transform:uppercase;
+	color:#42444f;
+}
+.show-text-location{
+	font-family: 'whitney_semiboldregular';
+	font-size:18px;
+	text-transform:uppercase;
+	color:#42444f;
+	margin-bottom:15px;
+}
+.show-text-link{
+	font-family: 'whitney_bookregular';
+	font-size:14px;
+	text-transform:uppercase;
+	color:#f36750;
+	text-decoration:none;
+}
+
+/* Section 3 - Videos */
+.section-video-wrap{
+	width:100%;
+	max-width:700px;
+	position:relative;
+}
+.first-video-wrap{
+	float: none;
+    clear: both;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
+}
+.first-video-wrap iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.first-video-text{
+	width:100%;
+	margin-top:10px;
+	font-size:18px;
+	color:#41414e;
+	text-transform:uppercase;
+	font-family: 'whitney_blackregular';
+}
+.first-video-text span{
+	font-family: 'whitney_semiboldregular';
+}
+.video-grid-wrap{
+	width:100%;
+	max-width:810px;
+	margin-top:40px;
+}
+a.video-grid-node{
+	width:240px;
+	height:140px;
+	background-color:#000;
+	display:block;
+}
+.video-box{
+	margin-right:30px;
+	margin-bottom:30px;
+	float:left;
+	font-family: 'whitney_blackregular';
+	font-size:14px;
+	text-transform:uppercase;
+	color:#41414e;
+}
+.video-box-text{
+	margin-top:5px;
+}
+.video-box span{
+	font-family: 'whitney_semiboldregular';
+}
+
+
+/* Section 4 - Nouvelles */
+.section-content.nouvelles{
+	max-width:700px;
+}
+.news-block{
+	width:100%;
+	max-width:700px;
+}
+.news-row{
+	width:100%;
+	padding-top:40px;
+	padding-bottom:40px;
+	border-bottom:1px solid #41414e;
+}
+.news-title{
+	font-size:18px;
+	color:#41414e;
+	text-transform:uppercase;
+	font-family: 'whitney_blackregular';
+	line-height:16px;
+}
+.news-title span{
+	font-size:14px;
+	font-family: 'whitney_semiboldregular';
+}
+.news-text{
+	color:#41414e;
+	font-family: 'whitney_bookregular';
+	margin-top:20px;
+	margin-bottom:10px;
+}
+a.news-link{
+	color:#f36750;
+	text-transform:uppercase;
+	font-size:14px;
+	font-family: 'whitney_bookregular';
+	text-decoration:none;
+}
+
+.owl-theme .owl-controls .owl-page span.owl-numbers{
+	padding:0px !important;
+	margin:0px !important;
+	height:40px !important;
+	width:40px !important;
+	text-align:center !important;
+	line-height:40px !important;
+	border-radius:0px !important;
+	font-size:14px !important;
+	font-family: 'whitney_semiboldregular';
+	color:#fafaef !important;
+}
+.owl-theme .owl-controls .owl-page.active span{
+	background-color:#f36750 !important;
+}
+.owl-theme .owl-controls .owl-page span{
+	background-color:#42444f !important;
+}
+.owl-page{
+	margin-left:5px;
+	margin-right:5px;
+	margin-top:10px;
+}
+
+
+
+/* Section 5 - Biographie */
+.section-text-bio{
+	font-family: 'whitney_bookregular';
+	font-size:14px;
+}
+
+/* Section 6 - Contact */
+.contact-wrap{
+	margin-top:60px;
+}
+span.contact-title{
+	font-family: 'whitney_blackregular';
+	font-size:20px;
+	color:#42444f;
+	text-transform:uppercase;
+}
+span.contact-number{
+	font-family: 'whitney_semiboldregular';
+	font-size:20px;
+	color:#42444f;
+}
+a.contact-link{
+	font-family: 'whitney_bookregular';
+	font-size:14px;
+	color:#f36750;
+	text-decoration:none;
+}
+
+/* =========================== */
+/*  HEADER */
+/* =========================== */
 .header{
 	height:40px;
 	width:100%;
@@ -38,6 +376,48 @@ html, body{
 	background-color:#40424f;
 	z-index:9000;
 }
+
+.header-wrap{
+	height:140px;
+	width:600px;
+	display:block;
+	position:absolute;
+	top:-140px;
+	left:50%;
+	transition:top 0.25s ease-in-out;
+	-ms-transition:top 0.25s ease-in-out;
+	-moz-transition:top 0.25s ease-in-out;
+	-webkit-transition:top 0.25s ease-in-out;
+}
+.header-wrap.active{
+	top:0px;
+}
+
+.header-tab{
+	width:140px;
+	height:100px;
+	position:absolute;
+	left:50%;
+	margin-left:-70px;
+	background:url(../images/header-tab.png)no-repeat;
+}
+.header-tab:hover{
+	cursor:pointer;
+}
+
+.navig-wrap-fixed{
+	display: table;
+	font-size: 16px;
+    font-family: 'whitney_lightregular';
+	top:120px;
+    position: absolute;
+	left:50%;
+	min-width:440px;
+}
+
+/* =========================== */
+/*  FOOTER */
+/* =========================== */
 .footer{
 	height:40px;
 	width:100%;
@@ -47,6 +427,51 @@ html, body{
 	background-color:#40424f;
 	z-index:9000;
 }
+.social-wrap{
+	position:absolute; 
+	right:40px;
+	top:0px;
+}
+.social-fb{
+	height:40px;
+	width:40px;
+	background:url(../images/fb-btn.gif) no-repeat;
+	float:left;
+}
+.social-tt{
+	height:40px;
+	width:40px;
+	background:url(../images/tt-btn.gif) no-repeat;
+	float:left;
+}
+.signature{
+	height:40px;
+	float:left;
+	margin-left:40px;
+	font-family: 'whitney_lightregular';
+	font-size:14px;
+	line-height:40px;
+	color:#fafaef;
+	text-transform:uppercase;
+}
+.signature span.semibold{
+	font-family: 'whitney_semiboldregular';
+}
+@media only screen and (max-width: 750px) {
+	.social-wrap{
+		right:0px;
+	}
+	.section-title{
+		font-size:80px;
+	}
+	.section-content{
+		margin-left:5%;
+	}
+}
+
+/* =========================== */
+/*  NICESCROLL */
+/* =========================== */
 .nicescroll-rails{
 	z-index:9999 !important;
 }
