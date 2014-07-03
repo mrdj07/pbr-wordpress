@@ -4,8 +4,12 @@ Template Name: Home
 */
 ?>
 
-<?php get_header(); ?>
-<?php if( have_posts() ) : while( have_posts() ) : the_post();?>
+<?php get_header();
+$datesStr = array(
+    "months" => array("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"),
+    "days" => array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi")
+);
+?>
 <div class="global">
 	<div class="wrap">
 		<div class="content">
@@ -14,7 +18,7 @@ Template Name: Home
 					Pierre-Bruno<br>
 					<span class="large">Rivard</span>
 				</div>
-				
+
 				<div class="navig-wrap">
 					<a id="spectacles-m"href="#" class="navig-item">Spectacles</a>
 					<a id="videos-m" href="#" class="navig-item">Vidéos</a>
@@ -23,158 +27,163 @@ Template Name: Home
 					<a id="contact-m" href="#" class="navig-item">Contact</a>
 					<div class="clear"></div>
 				</div>
-				
-				<div class="main-video">
-					<iframe width="640" height="360" src="//www.youtube.com/embed/PPxMOYzbnQk" frameborder="0" allowfullscreen></iframe>
-				</div>
+
+                <?php
+                $sticky = get_option( 'sticky_posts' );
+                $args = array(
+                    'category_name'		=> 'videos',
+                    'posts_per_page' => 1,
+                    'post__in'  => $sticky,
+                    'meta_key'		=> 'date',
+                    'orderby'		=> 'meta_value_num',
+                    'order'			=> 'DESC',
+                    'ignore_sticky_posts' => 1
+                );
+                $the_query = new WP_Query( $args );
+                if ( isset($sticky[0]) ) : ?>
+                    <?php if ( $the_query->have_posts() ) : $the_query->the_post(); $date = get_field('date')/1000; ?>
+                        <div class="main-video">
+                            <iframe src="//www.youtube.com/embed/<?php echo get_field('youtube_id'); ?>" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    <?php endif; endif; ?>
+                <?php wp_reset_postdata(); ?>
 				<div class="down-arrow-circle">
 					<div class="down-arrow-icon"></div>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="section-content spectacles">
 			<div class="section-title">Spectacles</div>
 			<div class="show-wrap">
-				<div class="show-row">
-					<div class="show-date">
-						<span class="topdate">19</span>
-						<span class="middate">Juin</span>
-						<span class="botdate">2014</span>
-						</div>
-					<div class="show-text">
-						<div class="show-text-title">Animation - les lundis du club extra humour</div>
-						<div class="show-text-location">le club dix 30, brossard - 20:00</div>
-						<a href="#" class="show-text-link">Info/billeterie</a>
-					</div>
-					<div class="clear"></div>
-				</div>
-				<div class="show-row">
-					<div class="show-date">
-						<span class="topdate">30</span>
-						<span class="middate">Septembre</span>
-						<span class="botdate">2014</span>
-						</div>
-					<div class="show-text">
-						<div class="show-text-title">Animation - les lundis du club extra humour</div>
-						<div class="show-text-location">le club dix 30, brossard - 20:00</div>
-						<a href="#" class="show-text-link">Info/billeterie</a>
-					</div>
-					<div class="clear"></div>
-				</div>
-				<div class="show-row">
-					<div class="show-date">
-						<span class="topdate">4</span>
-						<span class="middate">Février</span>
-						<span class="botdate">2015</span>
-						</div>
-					<div class="show-text">
-						<div class="show-text-title">Animation - les lundis du club extra humour</div>
-						<div class="show-text-location">le club dix 30, brossard - 20:00</div>
-						<a href="#" class="show-text-link">Info/billeterie</a>
-					</div>
-					<div class="clear"></div>
-				</div>
-				<div class="show-row">
-					<div class="show-date">
-						<span class="topdate">11</span>
-						<span class="middate">Mars</span>
-						<span class="botdate">2015</span>
-						</div>
-					<div class="show-text">
-						<div class="show-text-title">Animation - les lundis du club extra humour</div>
-						<div class="show-text-location">le club dix 30, brossard - 20:00</div>
-						<a href="#" class="show-text-link">Info/billeterie</a>
-					</div>
-					<div class="clear"></div>
-				</div>
+                <?php
+                $args = array(
+                    'category_name'		=> 'shows',
+                    'posts_per_page'	=> -1,
+                    'meta_key'		=> 'date',
+                    'orderby'		=> 'meta_value_num',
+                    'order'			=> 'DESC'
+                );
+                $the_query = new WP_Query( $args ); ?>
+
+                <?php if ( $the_query->have_posts() ) : ?>
+                    <?php while ( $the_query->have_posts() ) :
+                        $the_query->the_post();
+                        $date = get_field('date')/1000;
+                    ?>
+                        <div class="show-row">
+                            <div class="show-date">
+                                <span class="topdate"><?php echo date('d', $date); ?></span>
+                                <span class="middate"><?php echo $datesStr['months'][date('n', $date)-1]; ?></span>
+                                <span class="botdate"><?php echo date('Y', $date); ?></span>
+                            </div>
+                            <div class="show-text">
+                                <div class="show-text-title"><?php the_title(); ?></div>
+                                <div class="show-text-location"><?php the_field('place'); ?> - <?php the_field('time'); ?></div>
+                                <a href="<?php the_field('url_ticket'); ?>" class="show-text-link">Info/billeterie</a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    <?php endwhile; ?>
+                    <?php wp_reset_postdata(); ?>
+
+                <?php else:  ?>
+                    <p><?php _e( 'Aucun Spectacle de prévu!' ); ?></p>
+                <?php endif; ?>
 			</div>
 		</div>
 		
 		<div class="section-content videos">
 			<div class="section-title">Vidéos</div>
-			<div class="section-video-wrap">
-				<div class="first-video-wrap">
-					<iframe src="//www.youtube.com/embed/PPxMOYzbnQk" frameborder="0" allowfullscreen></iframe>
-				</div>
-				<div class="first-video-text">
-					REEL<br>
-					<span>22 Mars 2014</span>
-				</div>
-			</div>
+            <?php
+            $sticky = get_option( 'sticky_posts' );
+            $args = array(
+                'category_name'		=> 'videos',
+                'posts_per_page' => 1,
+                'post__in'  => $sticky,
+                'meta_key'		=> 'date',
+                'orderby'		=> 'meta_value_num',
+                'order'			=> 'DESC',
+                'ignore_sticky_posts' => 1
+            );
+            $the_query = new WP_Query( $args );
+            if ( isset($sticky[0]) ) : ?>
+                <?php if ( $the_query->have_posts() ) : $the_query->the_post(); $date = get_field('date')/1000; ?>
+                <div class="section-video-wrap">
+                    <div class="first-video-wrap">
+                        <iframe src="//www.youtube.com/embed/<?php echo get_field('youtube_id'); ?>" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="first-video-text">
+                        <?php echo the_title(); ?><br>
+                        <span><?php echo date('d', $date).' '.$datesStr['months'][date('n', $date)-1].' '.date('Y', $date); ?></span>
+                    </div>
+                </div>
+            <?php endif; endif; ?>
+            <?php wp_reset_postdata(); ?>
+
 			<div class="video-grid-wrap">
-				<div class="video-box">
-					<a href="#" class="video-grid-node"></a>
-					<div class="video-box-text">
-					Reel<br>
-					<span>22 Mars 2014</span>
-					</div>
-				</div>
-				<div class="video-box">
-					<a href="#" class="video-grid-node"></a>
-					<div class="video-box-text">
-					Reel<br>
-					<span>22 Mars 2014</span>
-					</div>
-				</div>
-				<div class="video-box">
-					<a href="#" class="video-grid-node"></a>
-					<div class="video-box-text">
-					Reel<br>
-					<span>22 Mars 2014</span>
-					</div>
-				</div>
-				<div class="video-box">
-					<a href="#" class="video-grid-node"></a>
-					<div class="video-box-text">
-					Reel<br>
-					<span>22 Mars 2014</span>
-					</div>
-				</div>
-				<div class="video-box">
-					<a href="#" class="video-grid-node"></a>
-					<div class="video-box-text">
-					Reel<br>
-					<span>22 Mars 2014</span>
-					</div>
-				</div>
-				<div class="video-box">
-					<a href="#" class="video-grid-node"></a>
-					<div class="video-box-text">
-					Reel<br>
-					<span>22 Mars 2014</span>
-					</div>
-				</div>
+
+                <?php
+                $args = array(
+                    'category_name'		=> 'videos',
+                    'posts_per_page'	=> -1,
+                    'meta_key'		=> 'date',
+                    'orderby'		=> 'meta_value_num',
+                    'order'			=> 'DESC',
+                );
+                $the_query = new WP_Query( $args ); ?>
+                <?php if ( $the_query->have_posts() ) : ?>
+                <?php while ( $the_query->have_posts() ) :
+
+                $the_query->the_post();
+                $date = get_field('date')/1000;
+                ?>
+                <div class="video-box">
+                    <a href="https://www.youtube.com/watch?v=a9YEbc5LXwI<?php echo get_field('youtube_id'); ?>/1.jpg" style="background-image: url('http://img.youtube.com/vi/<?php echo get_field('youtube_id'); ?>/0.jpg');" class="video-grid-node"></a>
+                    <div class="video-box-text">
+                        <?php the_title(); ?><br>
+                        <span><?php echo date('d', $date).' '.$datesStr['months'][date('n', $date)-1].' '.date('Y', $date); ?></span>
+                    </div>
+                </div>
+            <?php endwhile; ?>
+            <?php wp_reset_postdata(); ?>
+
+            <?php else:  ?>
+                <p><?php _e( 'Aucun Vidéo.' ); ?></p>
+            <?php endif; ?>
 				<div class="clear"></div>
 			</div>
-		</div>
 		
 		<div class="section-content nouvelles">
 			<div class="section-title">Nouvelles</div>
 			<div id="owlcarousel" class="owl-carousel owl-theme">
 				<div class="item news-block">
-					<div class="news-row">
-						<div class="news-title">Titre de la nouvelle<br><span>Date de la nouvelle</span></div>
-						<div class="news-text">Dès sa sortie de l’École Nationale de l’humour en 2010, Pierre-Bruno a démarré sa carrière en flèche et n’a pas ralenti depius.  Il laisse sa trace en tant que finaliste à l’émission En route vers mon premier gala Juste pour rire 2011, sur les galas Juste pour Rire et Grand Rire.</div>
-						<a href="#" class="news-link">Voir plus »</a>
-					</div>
-					<div class="news-row">
-						<div class="news-title">Titre de la nouvelle<br><span>Date de la nouvelle</span></div>
-						<div class="news-text">Dès sa sortie de l’École Nationale de l’humour en 2010, Pierre-Bruno a démarré sa carrière en flèche et n’a pas ralenti depius.  Il laisse sa trace en tant que finaliste à l’émission En route vers mon premier gala Juste pour rire 2011, sur les galas Juste pour Rire et Grand Rire.</div>
-						<a href="#" class="news-link">Voir plus »</a>
-					</div>
-				</div>
-				<div class="item news-block">
-					<div class="news-row">
-						<div class="news-title">Titre de la nouvelle<br><span>Date de la nouvelle</span></div>
-						<div class="news-text">Dès sa sortie de l’École Nationale de l’humour en 2010, Pierre-Bruno a démarré sa carrière en flèche et n’a pas ralenti depius.  Il laisse sa trace en tant que finaliste à l’émission En route vers mon premier gala Juste pour rire 2011, sur les galas Juste pour Rire et Grand Rire.</div>
-						<a href="#" class="news-link">Voir plus »</a>
-					</div>
-					<div class="news-row">
-						<div class="news-title">Titre de la nouvelle<br><span>Date de la nouvelle</span></div>
-						<div class="news-text">Dès sa sortie de l’École Nationale de l’humour en 2010, Pierre-Bruno a démarré sa carrière en flèche et n’a pas ralenti depius.  Il laisse sa trace en tant que finaliste à l’émission En route vers mon premier gala Juste pour rire 2011, sur les galas Juste pour Rire et Grand Rire.</div>
-						<a href="#" class="news-link">Voir plus »</a>
-					</div>
+                    <?php
+                    $args = array(
+                    'category_name'		=> 'news',
+                    'posts_per_page'	=> -1,
+                    'orderby'		=> 'date',
+                    'order'			=> 'DESC'
+                    );
+                    $the_query = new WP_Query( $args ); ?>
+
+                    <?php if ( $the_query->have_posts() ) : ?>
+                        <?php while ( $the_query->have_posts() ) :
+                            $the_query->the_post();
+                            $date = get_the_time('U');
+                            ?>
+
+                            <div class="news-row">
+                                <div class="news-title"<?php the_title(); ?><br><span><?php echo date('d/m/Y', $date); ?></span></div>
+                                <div class="news-text"><?php the_excerpt(); ?></div>
+                                <a href="<?php the_permalink(); ?>" class="news-link">Voir plus »</a>
+                            </div>
+                        <?php endwhile; ?>
+                        <?php wp_reset_postdata(); ?>
+
+                    <?php else:  ?>
+                        <p><?php _e( 'Aucune Nouvelle' ); ?></p>
+                    <?php endif; ?>
 				</div>
 			</div>
 			
@@ -183,27 +192,23 @@ Template Name: Home
 		<div class="section-content bio">
 			<div class="section-title">Bio</div>
 			<div class="section-text-bio">
-			Dès sa sortie de l’École Nationale de l’humour en 2010, Pierre-Bruno a démarré sa carrière en flèche et n’a pas ralenti depius.  Il laisse sa trace en tant que finaliste à l’émission En route vers mon premier gala Juste pour rire 2011, sur les galas Juste pour Rire et Grand Rire. En 3 ans il cumule plusieurs apparitions à la télévision, entre autre aux Mercredis JPR et au Grand Rire Comédie Club. Il s’illustre aussi beaucoup hors du Québec, qu’il s’agisse d’une tournée Canadienne l’amenant du Nouveau-Brunswick jusqu’en Colombie Britannique dans le cadre des Rendez-vous de la Francophonie ou des passages remarqués en Belgique et en France.
-			<br><br>
-			La qualité de son écriture se ressent sur scène et charme plusieurs humoristes qui font appel à lui, dont Maxim Martin, Rachid Badouri, Sylvain Laroque et Anne Roumanoff. Il est d’ailleurs récipiendaire d’un Olivier dans la catégorie « Textes de l’année » pour le dernier spectacle de Maxim Martin. Il signe aussi l’écriture de galas Juste pour Rire et Grand Rire et prête sa plume à des émissions telles queFiston sur msn.ca, Brassard en direct, Et si à Vtélé et C’est la Crise, avec Anne Roumanoff et Martin Matte, à Canal +, et plusieurs autres.
-			<br><br>
-			On pourra apprécier son côté versatile à l’automne 2014 comme comédien maison dans l’émission Arrange toi avec ça, animé par Stéphane Bellavance.
-			</div>
+            <?php
+                $bio = get_post(11, ARRAY_A );
+                if (!is_null($bio)) : echo $bio['post_content']; endif;
+            ?>
+            </div>
 		</div>
 		
 		<div class="section-content contact">
 			<div class="section-title">Contact</div>
 			<div class="contact-wrap">
-				<span class="contact-title">François Simard</span><br>
-				<span class="contact-number">514 849-8955 #22</span><br>
-				<a href="mailto:fsimard@hahaha.com" class="contact-link">FSIMARD@HAHAHA.COM</a>
+                <?php
+                $bio = get_post(13, ARRAY_A );
+                if (!is_null($bio)) : echo $bio['post_content']; endif;
+                ?>
 			</div>
 		</div>
 		
 	</div>
 </div>
-<?php 	
-	endwhile;
-	endif;
-?>
 <?php get_footer(); ?>

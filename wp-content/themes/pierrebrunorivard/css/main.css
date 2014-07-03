@@ -252,6 +252,7 @@ a.video-grid-node{
 	width:240px;
 	height:140px;
 	background-color:#000;
+    background-size: cover;
 	display:block;
 }
 .video-box{
