@@ -1,0 +1,9 @@
+user FTP:
+
+U: u50875552-pbr
+P: pbrAdm1N1472
+
+admin wordpress:
+U: admin
+P: pbrAdm1N1472
+
