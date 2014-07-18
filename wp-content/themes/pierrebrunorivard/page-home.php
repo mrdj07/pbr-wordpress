@@ -23,7 +23,9 @@ $datesStr = array(
 					<a id="spectacles-m"href="#" class="navig-item">Spectacles</a>
 					<a id="videos-m" href="#" class="navig-item">Vidéos</a>
 					<a id="nouvelles-m" href="#" class="navig-item">Nouvelles</a>
+					<a id="blog-m" href="#" class="navig-item">Blog</a>
 					<a id="bio-m" href="#" class="navig-item">Bio</a>
+					<a id="gallerie-m" href="#" class="navig-item">Gallerie</a>
 					<a id="contact-m" href="#" class="navig-item">Contact</a>
 					<div class="clear"></div>
 				</div>
@@ -53,6 +55,9 @@ $datesStr = array(
 			</div>
 		</div>
 
+		<!-- =============================================== -->
+		<!-- SPECTACLES                                      -->
+		<!-- =============================================== -->
 		<div class="section-content spectacles">
 			<div class="section-title">Spectacles</div>
 			<div class="show-wrap">
@@ -93,6 +98,9 @@ $datesStr = array(
 			</div>
 		</div>
 		
+		<!-- =============================================== -->
+		<!-- VIDEOS                                          -->
+		<!-- =============================================== -->
 		<div class="section-content videos">
 			<div class="section-title">Vidéos</div>
             <?php
@@ -139,7 +147,7 @@ $datesStr = array(
                 $date = get_field('date')/1000;
                 ?>
                 <div class="video-box">
-                    <a href="https://www.youtube.com/watch?v=a9YEbc5LXwI<?php echo get_field('youtube_id'); ?>/1.jpg" style="background-image: url('http://img.youtube.com/vi/<?php echo get_field('youtube_id'); ?>/0.jpg');" class="video-grid-node"></a>
+                    <a href="https://www.youtube.com/watch?v=<?php echo get_field('youtube_id'); ?>" style="background-image: url('http://img.youtube.com/vi/<?php echo get_field('youtube_id'); ?>/0.jpg');" target="_self" class="video-grid-node"></a>
                     <div class="video-box-text">
                         <?php the_title(); ?><br>
                         <span><?php echo date('d', $date).' '.$datesStr['months'][date('n', $date)-1].' '.date('Y', $date); ?></span>
@@ -153,42 +161,125 @@ $datesStr = array(
             <?php endif; ?>
 				<div class="clear"></div>
 			</div>
-		
-		<div class="section-content nouvelles">
-			<div class="section-title">Nouvelles</div>
-			<div id="owlcarousel" class="owl-carousel owl-theme">
-				<div class="item news-block">
-                    <?php
-                    $args = array(
-                    'category_name'		=> 'news',
-                    'posts_per_page'	=> -1,
-                    'orderby'		=> 'date',
-                    'order'			=> 'DESC'
-                    );
-                    $the_query = new WP_Query( $args ); ?>
-
-                    <?php if ( $the_query->have_posts() ) : ?>
-                        <?php while ( $the_query->have_posts() ) :
-                            $the_query->the_post();
-                            $date = get_the_time('U');
-                            ?>
-
-                            <div class="news-row">
-                                <div class="news-title"<?php the_title(); ?><br><span><?php echo date('d/m/Y', $date); ?></span></div>
-                                <div class="news-text"><?php the_excerpt(); ?></div>
-                                <a href="<?php the_permalink(); ?>" class="news-link">Voir plus »</a>
-                            </div>
-                        <?php endwhile; ?>
-                        <?php wp_reset_postdata(); ?>
-
-                    <?php else:  ?>
-                        <p><?php _e( 'Aucune Nouvelle' ); ?></p>
-                    <?php endif; ?>
-				</div>
-			</div>
-			
 		</div>
 		
+		<!-- =============================================== -->
+		<!-- NOUVELLES                                       -->
+		<!-- =============================================== -->
+		<div class="section-content nouvelles">
+			<div class="section-title">Nouvelles</div>
+			<?php $count = 0 ?>
+			<div id="owlcarousel" class="owl-carousel owl-theme">
+				<?php
+				$args = array(
+				'category_name'		=> 'news',
+				'posts_per_page'	=> -1,
+				'orderby'		=> 'date',
+				'order'			=> 'DESC'
+				);
+				$the_query = new WP_Query( $args ); ?>
+
+				<?php if ( $the_query->have_posts() ) : ?>
+					<?php while ( $the_query->have_posts() ) :
+						$the_query->the_post();
+						$date = get_the_time('U');
+						?>
+						
+						<?php 
+							if($count == 0){
+								echo '<div class="item news-block">';
+							};
+						?>
+						<div class="news-row">
+							<div class="news-title"><?php the_title(); ?>
+							<br><span>
+							<?php echo date('d/m/Y', $date); ?>
+							</span></div>
+							<div class="news-text"><?php the_excerpt(); ?></div>
+							<a href="<?php the_permalink(); ?>" class="news-link">Voir plus »</a>
+						</div>
+						<?php $count = $count+1; ?>
+						<?php 
+							if($count == 2){
+								$count = 0;
+								echo '</div>';
+							};
+						?>
+						
+					<?php endwhile; ?>
+					<?php 
+						if($count == 1){
+							echo '</div>';
+						};
+					?>
+					<?php wp_reset_postdata(); ?>
+
+				<?php else:  ?>
+					<p><?php _e( 'Aucune Nouvelle' ); ?></p>
+				<?php endif; ?>
+			</div>
+		</div>
+		
+		<!-- =============================================== -->
+		<!-- BLOG                                            -->
+		<!-- =============================================== -->
+		<div class="section-content blog">
+			<div class="section-title">Blog</div>
+			<?php $count = 0 ?>
+			<div id="owlcarousel" class="owl-carousel owl-theme">
+				<?php
+				$args = array(
+				'category_name'		=> 'news',
+				'posts_per_page'	=> -1,
+				'orderby'		=> 'date',
+				'order'			=> 'DESC'
+				);
+				$the_query = new WP_Query( $args ); ?>
+
+				<?php if ( $the_query->have_posts() ) : ?>
+					<?php while ( $the_query->have_posts() ) :
+						$the_query->the_post();
+						$date = get_the_time('U');
+						?>
+						
+						<?php 
+							if($count == 0){
+								echo '<div class="item blog-block">';
+							};
+						?>
+						<div class="blog-row">
+							<div class="blog-title"><?php the_title(); ?>
+							<br><span>
+							<?php echo date('d/m/Y', $date); ?>
+							</span></div>
+							<div class="blog-text"><?php the_excerpt(); ?></div>
+							<a href="<?php the_permalink(); ?>" class="blog-link">Voir plus »</a>
+						</div>
+						<?php $count = $count+1; ?>
+						<?php 
+							if($count == 2){
+								$count = 0;
+								echo '</div>';
+							};
+						?>
+						
+					<?php endwhile; ?>
+					<?php 
+						if($count == 1){
+							echo '</div>';
+						};
+					?>
+					<?php wp_reset_postdata(); ?>
+
+				<?php else:  ?>
+					<p><?php _e( 'Aucun article' ); ?></p>
+				<?php endif; ?>
+			</div>
+		</div>
+		
+		<!-- =============================================== -->
+		<!-- BIOGRAPHIE                                      -->
+		<!-- =============================================== -->
 		<div class="section-content bio">
 			<div class="section-title">Bio</div>
 			<div class="section-text-bio">
@@ -199,6 +290,28 @@ $datesStr = array(
             </div>
 		</div>
 		
+		<!-- =============================================== -->
+		<!-- GALLERIE                                        -->
+		<!-- =============================================== -->
+		<div class="section-content gallerie">
+			<div class="section-title">Gallerie</div>
+			<div class="gallery-wrap">
+				<a href="#" class="gallery-item"></a>
+				<a href="#" class="gallery-item"></a>
+				<a href="#" class="gallery-item"></a>
+				<a href="#" class="gallery-item"></a>
+				<a href="#" class="gallery-item"></a>
+				<a href="#" class="gallery-item"></a>
+				<a href="#" class="gallery-item"></a>
+				<a href="#" class="gallery-item"></a>
+				<a href="#" class="gallery-item"></a>
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		<!-- =============================================== -->
+		<!-- CONTACT                                         -->
+		<!-- =============================================== -->
 		<div class="section-content contact">
 			<div class="section-title">Contact</div>
 			<div class="contact-wrap">
@@ -208,7 +321,6 @@ $datesStr = array(
                 ?>
 			</div>
 		</div>
-		
 	</div>
 </div>
 <?php get_footer(); ?>

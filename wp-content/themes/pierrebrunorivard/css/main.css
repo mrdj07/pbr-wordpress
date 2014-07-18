@@ -26,8 +26,9 @@ html, body{
 	box-sizing:border-box;
 	position:relative;
 	height:100%;
+	min-width:600px;
 }
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 1100px) {
 	.global{
 		padding-left:0px;
 		padding-right:0px;
@@ -46,7 +47,7 @@ html, body{
 	z-index:1000;
 }
 
-/* Section 1 - Intro*/
+/* Section - Intro */
 .section-intro{
 	font-family: 'whitney_blackregular';
 	margin-top:22px;
@@ -132,7 +133,7 @@ a.navig-item.active{
 	background:url(../images/arrow-more.png) center 26px no-repeat;
 }
 
-/* Section 2 - Spectacles */
+/* Section - Spectacles */
 .section-content{
 	width:60%;
 	margin-left:10%;
@@ -210,7 +211,7 @@ span.botdate{
 	text-decoration:none;
 }
 
-/* Section 3 - Videos */
+/* Section - Videos */
 .section-video-wrap{
 	width:100%;
 	max-width:700px;
@@ -272,7 +273,7 @@ a.video-grid-node{
 }
 
 
-/* Section 4 - Nouvelles */
+/* Section - Nouvelles */
 .section-content.nouvelles{
 	max-width:700px;
 }
@@ -335,15 +336,68 @@ a.news-link{
 	margin-top:10px;
 }
 
+/* Section - Blog */
+.section-content.blog{
+	max-width:700px;
+}
+.blog-block{
+	width:100%;
+	max-width:700px;
+}
+.blog-row{
+	width:100%;
+	padding-top:40px;
+	padding-bottom:40px;
+	border-bottom:1px solid #41414e;
+}
+.blog-title{
+	font-size:18px;
+	color:#41414e;
+	text-transform:uppercase;
+	font-family: 'whitney_blackregular';
+	line-height:16px;
+}
+.blog-title span{
+	font-size:14px;
+	font-family: 'whitney_semiboldregular';
+}
+.blog-text{
+	color:#41414e;
+	font-family: 'whitney_bookregular';
+	margin-top:20px;
+	margin-bottom:10px;
+}
+a.blog-link{
+	color:#f36750;
+	text-transform:uppercase;
+	font-size:14px;
+	font-family: 'whitney_bookregular';
+	text-decoration:none;
+}
 
-
-/* Section 5 - Biographie */
+/* Section - Biographie */
 .section-text-bio{
 	font-family: 'whitney_bookregular';
 	font-size:14px;
 }
+/* Section - Gallerie */
+.gallery-wrap{
+	margin-top: 40px;
+    max-width: 810px;
+    width: 100%;
+}
+a.gallery-item{
+	background-color: #000;
+    background-size: cover;
+    display: block;
+    height: 140px;
+    width: 240px;
+	float:left;
+	margin-right:30px;
+	margin-bottom:30px;
+}
 
-/* Section 6 - Contact */
+/* Section - Contact */
 .contact-wrap{
 	margin-top:60px;
 }
@@ -364,6 +418,31 @@ a.contact-link{
 	color:#f36750;
 	text-decoration:none;
 }
+/* =========================== */
+/*  POSTS */
+/* =========================== */
+.post-wrap{
+	width:60%;
+	margin-left:10%;
+	min-height:800px;
+	padding-top:120px;
+}
+.post-title{
+	color: #40424f;
+    font-family: 'whitney_blackregular';
+    font-size: 64px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.post-text{
+	color: #41414e;
+    font-family: 'whitney_bookregular';
+}
+.backlink{
+	color:#f36750;
+	font-family: 'whitney_bookregular';
+	text-decoration: none;
+}
 
 /* =========================== */
 /*  HEADER */
@@ -376,11 +455,12 @@ a.contact-link{
 	left:0px;
 	background-color:#40424f;
 	z-index:9000;
+	min-width:600px;
 }
 
 .header-wrap{
 	height:140px;
-	width:600px;
+	width:750px;
 	display:block;
 	position:absolute;
 	top:-140px;
@@ -392,6 +472,9 @@ a.contact-link{
 }
 .header-wrap.active{
 	top:0px;
+}
+.single-post .header-wrap{
+	display:none !important;
 }
 
 .header-tab{
@@ -413,7 +496,7 @@ a.contact-link{
 	top:120px;
     position: absolute;
 	left:50%;
-	min-width:440px;
+	min-width:600px;
 }
 
 /* =========================== */
@@ -427,6 +510,7 @@ a.contact-link{
 	left:0px;
 	background-color:#40424f;
 	z-index:9000;
+	min-width:600px;
 }
 .social-wrap{
 	position:absolute; 
@@ -458,15 +542,18 @@ a.contact-link{
 .signature span.semibold{
 	font-family: 'whitney_semiboldregular';
 }
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 1100px) {
 	.social-wrap{
 		right:0px;
 	}
 	.section-title{
-		font-size:80px;
+		font-size:64px;
 	}
 	.section-content{
 		margin-left:5%;
+	}
+	.wrap{
+		background-size: 321px 495px;
 	}
 }
 
