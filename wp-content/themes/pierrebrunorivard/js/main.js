@@ -11,7 +11,7 @@ $(document).ready(function(){
 /* OWL CAROUSEL */
 /* ===================== */
 $(document).ready(function(){ 
-	$("#owlcarousel").owlCarousel({
+	$(".owlcarousel").owlCarousel({
 	navigation : false,
 	slideSpeed : 300,
 	paginationSpeed : 400,

@@ -25,7 +25,7 @@
 				<a id="nouvelles-h" href="#" class="navig-item nouvelles">Nouvelles</a>
 				<a id="blog-h" href="#" class="navig-item blog">Blog</a>
 				<a id="bio-h" href="#" class="navig-item bio">Bio</a>
-				<a id="gallerie-h" href="#" class="navig-item gallerie">Gallerie</a>
+				<a id="gallerie-h" href="#" class="navig-item gallerie">Galerie</a>
 				<a id="contact-h" href="#" class="navig-item contact">Contact</a>
 				<div class="clear"></div>
 			</div>

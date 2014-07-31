@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `wp_options` (
 --
 
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-(1, 'siteurl', 'http://localhost/projects/pbr-wordpress/', 'yes'),
+(1, 'siteurl', 'http://pbr.local.com/', 'yes'),
 (2, 'blogname', 'Pierre-Bruno Rivard', 'yes'),
 (3, 'blogdescription', 'Humoriste', 'yes'),
 (4, 'users_can_register', '0', 'yes'),
@@ -141,7 +141,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (30, 'blog_charset', 'UTF-8', 'yes'),
 (31, 'moderation_keys', '', 'no'),
 (32, 'active_plugins', 'a:1:{i:0;s:30:"advanced-custom-fields/acf.php";}', 'yes'),
-(33, 'home', 'http://localhost/projects/pbr-wordpress/', 'yes'),
+(33, 'home', 'http://pbr.local.com/', 'yes'),
 (34, 'category_base', '', 'yes'),
 (35, 'ping_sites', 'http://rpc.pingomatic.com/', 'yes'),
 (36, 'advanced_edit', '0', 'yes'),
@@ -428,23 +428,23 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (28, 1, '2014-07-03 00:35:24', '2014-07-03 04:35:24', 'Yeaaah vidéo.', 'Gros Vidéo', '', 'inherit', 'open', 'open', '', '26-revision-v1', '', '', '2014-07-03 00:35:24', '2014-07-03 04:35:24', '', 26, 'http://pbr.local.com/26-revision-v1/', 0, 'revision', '', 0),
 (29, 1, '2014-07-03 00:36:51', '2014-07-03 04:36:51', 'HAAAWEEEEE', 'Moins Gros, mais new Sticky', '', 'publish', 'open', 'open', '', 'moins-gros-mais-new-sticky', '', '', '2014-07-03 00:39:37', '2014-07-03 04:39:37', '', 0, 'http://pbr.local.com/?p=29', 0, 'post', '', 0),
 (30, 1, '2014-07-03 00:36:51', '2014-07-03 04:36:51', 'HAAAWEEEEE', 'Moins Gros, mais new Sticky', '', 'inherit', 'open', 'open', '', '29-revision-v1', '', '', '2014-07-03 00:36:51', '2014-07-03 04:36:51', '', 29, 'http://pbr.local.com/29-revision-v1/', 0, 'revision', '', 0),
-(31, 1, '2014-07-18 10:52:51', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2014-07-18 10:52:51', '0000-00-00 00:00:00', '', 0, 'http://localhost/projects/pbr-wordpress/?p=31', 0, 'post', '', 0),
-(32, 1, '2014-07-18 10:55:11', '2014-07-18 14:55:11', 'news 1 text', 'News 1', '', 'publish', 'open', 'open', '', 'news-1', '', '', '2014-07-18 10:55:11', '2014-07-18 14:55:11', '', 0, 'http://localhost/projects/pbr-wordpress/?p=32', 0, 'post', '', 0),
-(33, 1, '2014-07-18 10:55:11', '2014-07-18 14:55:11', 'news 1 text', 'News 1', '', 'inherit', 'open', 'open', '', '32-revision-v1', '', '', '2014-07-18 10:55:11', '2014-07-18 14:55:11', '', 32, 'http://localhost/projects/pbr-wordpress/32-revision-v1/', 0, 'revision', '', 0),
-(34, 1, '2014-07-18 10:58:56', '2014-07-18 14:58:56', 'News 2', 'News 2', '', 'publish', 'open', 'open', '', 'news-2', '', '', '2014-07-18 10:58:56', '2014-07-18 14:58:56', '', 0, 'http://localhost/projects/pbr-wordpress/?p=34', 0, 'post', '', 0),
-(35, 1, '2014-07-18 10:58:56', '2014-07-18 14:58:56', 'News 2', 'News 2', '', 'inherit', 'open', 'open', '', '34-revision-v1', '', '', '2014-07-18 10:58:56', '2014-07-18 14:58:56', '', 34, 'http://localhost/projects/pbr-wordpress/34-revision-v1/', 0, 'revision', '', 0),
-(36, 1, '2014-07-18 10:59:22', '2014-07-18 14:59:22', 'News 3', 'News 3', '', 'publish', 'open', 'open', '', 'news-3', '', '', '2014-07-18 10:59:37', '2014-07-18 14:59:37', '', 0, 'http://localhost/projects/pbr-wordpress/?p=36', 0, 'post', '', 0),
-(37, 1, '2014-07-18 10:59:22', '2014-07-18 14:59:22', 'News 3', 'News 3', '', 'inherit', 'open', 'open', '', '36-revision-v1', '', '', '2014-07-18 10:59:22', '2014-07-18 14:59:22', '', 36, 'http://localhost/projects/pbr-wordpress/36-revision-v1/', 0, 'revision', '', 0),
-(38, 1, '2014-07-18 11:00:01', '2014-07-18 15:00:01', 'News 4 text', 'News 4', '', 'publish', 'open', 'open', '', 'news-4', '', '', '2014-07-18 11:29:17', '2014-07-18 15:29:17', '', 0, 'http://localhost/projects/pbr-wordpress/?p=38', 0, 'post', '', 0),
-(39, 1, '2014-07-18 11:00:01', '2014-07-18 15:00:01', '', 'News 4', '', 'inherit', 'open', 'open', '', '38-revision-v1', '', '', '2014-07-18 11:00:01', '2014-07-18 15:00:01', '', 38, 'http://localhost/projects/pbr-wordpress/38-revision-v1/', 0, 'revision', '', 0),
-(40, 1, '2014-07-18 11:01:41', '2014-07-18 15:01:41', 'Show 1 text', 'Show 1', '', 'publish', 'open', 'open', '', 'show-1', '', '', '2014-07-18 11:01:41', '2014-07-18 15:01:41', '', 0, 'http://localhost/projects/pbr-wordpress/?p=40', 0, 'post', '', 0),
-(41, 1, '2014-07-18 11:01:41', '2014-07-18 15:01:41', 'Show 1 text', 'Show 1', '', 'inherit', 'open', 'open', '', '40-revision-v1', '', '', '2014-07-18 11:01:41', '2014-07-18 15:01:41', '', 40, 'http://localhost/projects/pbr-wordpress/40-revision-v1/', 0, 'revision', '', 0),
-(42, 1, '2014-07-18 11:29:17', '2014-07-18 15:29:17', 'News 4 text', 'News 4', '', 'inherit', 'open', 'open', '', '38-revision-v1', '', '', '2014-07-18 11:29:17', '2014-07-18 15:29:17', '', 38, 'http://localhost/projects/pbr-wordpress/38-revision-v1/', 0, 'revision', '', 0),
-(43, 1, '2014-07-18 11:30:01', '2014-07-18 15:30:01', 'News 5 text', 'News 5', '', 'publish', 'open', 'open', '', 'news-5', '', '', '2014-07-18 13:32:33', '2014-07-18 17:32:33', '', 0, 'http://localhost/projects/pbr-wordpress/?p=43', 0, 'post', '', 0),
-(44, 1, '2014-07-18 11:30:01', '2014-07-18 15:30:01', 'News 5 text', 'News 5', '', 'inherit', 'open', 'open', '', '43-revision-v1', '', '', '2014-07-18 11:30:01', '2014-07-18 15:30:01', '', 43, 'http://localhost/projects/pbr-wordpress/43-revision-v1/', 0, 'revision', '', 0),
-(45, 1, '2014-07-18 12:39:57', '2014-07-18 16:39:57', '<span class="contact-title">François Simard</span><br>\r\n\r\n<span class="contact-number">514 849-8955 #22</span><br>\r\n\r\n<a class="contact-link" href="mailto:fsimard@hahaha.com">FSIMARD@HAHAHA.COM</a>', 'Contact', '', 'inherit', 'open', 'open', '', '13-revision-v1', '', '', '2014-07-18 12:39:57', '2014-07-18 16:39:57', '', 13, 'http://localhost/projects/pbr-wordpress/13-revision-v1/', 0, 'revision', '', 0),
-(46, 1, '2014-07-18 13:22:58', '2014-07-18 17:22:58', '', 'Posts', '', 'publish', 'open', 'open', '', 'posts', '', '', '2014-07-18 13:29:44', '2014-07-18 17:29:44', '', 0, 'http://localhost/projects/pbr-wordpress/?page_id=46', 0, 'page', '', 0),
-(47, 1, '2014-07-18 13:22:58', '2014-07-18 17:22:58', '', 'Posts', '', 'inherit', 'open', 'open', '', '46-revision-v1', '', '', '2014-07-18 13:22:58', '2014-07-18 17:22:58', '', 46, 'http://localhost/projects/pbr-wordpress/46-revision-v1/', 0, 'revision', '', 0);
+(31, 1, '2014-07-18 10:52:51', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2014-07-18 10:52:51', '0000-00-00 00:00:00', '', 0, 'http://pbr.local.com/?p=31', 0, 'post', '', 0),
+(32, 1, '2014-07-18 10:55:11', '2014-07-18 14:55:11', 'news 1 text', 'News 1', '', 'publish', 'open', 'open', '', 'news-1', '', '', '2014-07-18 10:55:11', '2014-07-18 14:55:11', '', 0, 'http://pbr.local.com/?p=32', 0, 'post', '', 0),
+(33, 1, '2014-07-18 10:55:11', '2014-07-18 14:55:11', 'news 1 text', 'News 1', '', 'inherit', 'open', 'open', '', '32-revision-v1', '', '', '2014-07-18 10:55:11', '2014-07-18 14:55:11', '', 32, 'http://pbr.local.com/32-revision-v1/', 0, 'revision', '', 0),
+(34, 1, '2014-07-18 10:58:56', '2014-07-18 14:58:56', 'News 2', 'News 2', '', 'publish', 'open', 'open', '', 'news-2', '', '', '2014-07-18 10:58:56', '2014-07-18 14:58:56', '', 0, 'http://pbr.local.com/?p=34', 0, 'post', '', 0),
+(35, 1, '2014-07-18 10:58:56', '2014-07-18 14:58:56', 'News 2', 'News 2', '', 'inherit', 'open', 'open', '', '34-revision-v1', '', '', '2014-07-18 10:58:56', '2014-07-18 14:58:56', '', 34, 'http://pbr.local.com/34-revision-v1/', 0, 'revision', '', 0),
+(36, 1, '2014-07-18 10:59:22', '2014-07-18 14:59:22', 'News 3', 'News 3', '', 'publish', 'open', 'open', '', 'news-3', '', '', '2014-07-18 10:59:37', '2014-07-18 14:59:37', '', 0, 'http://pbr.local.com/?p=36', 0, 'post', '', 0),
+(37, 1, '2014-07-18 10:59:22', '2014-07-18 14:59:22', 'News 3', 'News 3', '', 'inherit', 'open', 'open', '', '36-revision-v1', '', '', '2014-07-18 10:59:22', '2014-07-18 14:59:22', '', 36, 'http://pbr.local.com/36-revision-v1/', 0, 'revision', '', 0),
+(38, 1, '2014-07-18 11:00:01', '2014-07-18 15:00:01', 'News 4 text', 'News 4', '', 'publish', 'open', 'open', '', 'news-4', '', '', '2014-07-18 11:29:17', '2014-07-18 15:29:17', '', 0, 'http://pbr.local.com/?p=38', 0, 'post', '', 0),
+(39, 1, '2014-07-18 11:00:01', '2014-07-18 15:00:01', '', 'News 4', '', 'inherit', 'open', 'open', '', '38-revision-v1', '', '', '2014-07-18 11:00:01', '2014-07-18 15:00:01', '', 38, 'http://pbr.local.com/38-revision-v1/', 0, 'revision', '', 0),
+(40, 1, '2014-07-18 11:01:41', '2014-07-18 15:01:41', 'Show 1 text', 'Show 1', '', 'publish', 'open', 'open', '', 'show-1', '', '', '2014-07-18 11:01:41', '2014-07-18 15:01:41', '', 0, 'http://pbr.local.com/?p=40', 0, 'post', '', 0),
+(41, 1, '2014-07-18 11:01:41', '2014-07-18 15:01:41', 'Show 1 text', 'Show 1', '', 'inherit', 'open', 'open', '', '40-revision-v1', '', '', '2014-07-18 11:01:41', '2014-07-18 15:01:41', '', 40, 'http://pbr.local.com/40-revision-v1/', 0, 'revision', '', 0),
+(42, 1, '2014-07-18 11:29:17', '2014-07-18 15:29:17', 'News 4 text', 'News 4', '', 'inherit', 'open', 'open', '', '38-revision-v1', '', '', '2014-07-18 11:29:17', '2014-07-18 15:29:17', '', 38, 'http://pbr.local.com/38-revision-v1/', 0, 'revision', '', 0),
+(43, 1, '2014-07-18 11:30:01', '2014-07-18 15:30:01', 'News 5 text', 'News 5', '', 'publish', 'open', 'open', '', 'news-5', '', '', '2014-07-18 13:32:33', '2014-07-18 17:32:33', '', 0, 'http://pbr.local.com/?p=43', 0, 'post', '', 0),
+(44, 1, '2014-07-18 11:30:01', '2014-07-18 15:30:01', 'News 5 text', 'News 5', '', 'inherit', 'open', 'open', '', '43-revision-v1', '', '', '2014-07-18 11:30:01', '2014-07-18 15:30:01', '', 43, 'http://pbr.local.com/43-revision-v1/', 0, 'revision', '', 0),
+(45, 1, '2014-07-18 12:39:57', '2014-07-18 16:39:57', '<span class="contact-title">François Simard</span><br>\r\n\r\n<span class="contact-number">514 849-8955 #22</span><br>\r\n\r\n<a class="contact-link" href="mailto:fsimard@hahaha.com">FSIMARD@HAHAHA.COM</a>', 'Contact', '', 'inherit', 'open', 'open', '', '13-revision-v1', '', '', '2014-07-18 12:39:57', '2014-07-18 16:39:57', '', 13, 'http://pbr.local.com/13-revision-v1/', 0, 'revision', '', 0),
+(46, 1, '2014-07-18 13:22:58', '2014-07-18 17:22:58', '', 'Posts', '', 'publish', 'open', 'open', '', 'posts', '', '', '2014-07-18 13:29:44', '2014-07-18 17:29:44', '', 0, 'http://pbr.local.com/?page_id=46', 0, 'page', '', 0),
+(47, 1, '2014-07-18 13:22:58', '2014-07-18 17:22:58', '', 'Posts', '', 'inherit', 'open', 'open', '', '46-revision-v1', '', '', '2014-07-18 13:22:58', '2014-07-18 17:22:58', '', 46, 'http://pbr.local.com/46-revision-v1/', 0, 'revision', '', 0);
 
 -- --------------------------------------------------------
 

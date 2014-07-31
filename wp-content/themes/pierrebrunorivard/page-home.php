@@ -25,7 +25,7 @@ $datesStr = array(
 					<a id="nouvelles-m" href="#" class="navig-item">Nouvelles</a>
 					<a id="blog-m" href="#" class="navig-item">Blog</a>
 					<a id="bio-m" href="#" class="navig-item">Bio</a>
-					<a id="gallerie-m" href="#" class="navig-item">Gallerie</a>
+					<a id="gallerie-m" href="#" class="navig-item">Galerie</a>
 					<a id="contact-m" href="#" class="navig-item">Contact</a>
 					<div class="clear"></div>
 				</div>
@@ -169,7 +169,7 @@ $datesStr = array(
 		<div class="section-content nouvelles">
 			<div class="section-title">Nouvelles</div>
 			<?php $count = 0 ?>
-			<div id="owlcarousel" class="owl-carousel owl-theme">
+			<div id="carousel_blog" class="owlcarousel owl-carousel owl-theme">
 				<?php
 				$args = array(
 				'category_name'		=> 'news',
@@ -226,10 +226,10 @@ $datesStr = array(
 		<div class="section-content blog">
 			<div class="section-title">Blog</div>
 			<?php $count = 0 ?>
-			<div id="owlcarousel" class="owl-carousel owl-theme">
+			<div id="carousel_blog" class="owlcarousel owl-carousel owl-theme">
 				<?php
 				$args = array(
-				'category_name'		=> 'news',
+				'category_name'		=> 'blog',
 				'posts_per_page'	=> -1,
 				'orderby'		=> 'date',
 				'order'			=> 'DESC'
@@ -294,19 +294,23 @@ $datesStr = array(
 		<!-- GALLERIE                                        -->
 		<!-- =============================================== -->
 		<div class="section-content gallerie">
-			<div class="section-title">Gallerie</div>
-			<div class="gallery-wrap">
-				<a href="#" class="gallery-item"></a>
-				<a href="#" class="gallery-item"></a>
-				<a href="#" class="gallery-item"></a>
-				<a href="#" class="gallery-item"></a>
-				<a href="#" class="gallery-item"></a>
-				<a href="#" class="gallery-item"></a>
-				<a href="#" class="gallery-item"></a>
-				<a href="#" class="gallery-item"></a>
-				<a href="#" class="gallery-item"></a>
-				<div class="clear"></div>
-			</div>
+			<div class="section-title">Galerie</div>
+            <div class="gallery-wrap">
+            <?php
+            $query_images_args = array(
+                'post_type' => 'attachment', 'post_mime_type' =>'image', 'post_status' => 'inherit', 'posts_per_page' => -1, 'post_parent' => 55
+            );
+
+            $query_images = new WP_Query( $query_images_args );
+            $images = array();
+            foreach ( $query_images->posts as $image) {
+;
+                echo '<a href="'.wp_get_attachment_url( $image->ID ).'" data-litebox-group="gallery" class="gallery-item">'.wp_get_attachment_image($image->ID, 'gallery-thumb').'</a>';
+            }
+
+            ?>
+                <div class="clear"></div>
+            </div>
 		</div>
 		
 		<!-- =============================================== -->
