@@ -17,7 +17,7 @@ html, body{
 }
 
 /* =========================== */
-/*  CONTENT */
+/* CONTENT                     */
 /* =========================== */
 .global{
 	width:100%;
@@ -28,7 +28,7 @@ html, body{
 	height:100%;
 	min-width:600px;
 }
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1280px) {
 	.global{
 		padding-left:0px;
 		padding-right:0px;
@@ -80,9 +80,12 @@ a.navig-item{
 	float:left;
 	margin-left:12px;
 	margin-right:12px;
-	color:#41414e;
+	color:#40424f;
 	text-decoration:none;
 	line-height:16px;
+}
+.navig-wrap-fixed a.navig-item{
+	color:#fafaef;
 }
 a.navig-item:hover{
 	color:#f36750;
@@ -138,7 +141,7 @@ a.navig-item.active{
 	width:60%;
 	margin-left:10%;
 	min-height:800px;
-	padding-top:200px;
+	padding-top:160px;
 }
 .section-title{
 	font-size:102px;
@@ -419,7 +422,7 @@ a.contact-link{
 	text-decoration:none;
 }
 /* =========================== */
-/*  POSTS */
+/* POSTS                       */
 /* =========================== */
 .post-wrap{
 	width:60%;
@@ -445,7 +448,7 @@ a.contact-link{
 }
 
 /* =========================== */
-/*  HEADER */
+/* HEADER                      */
 /* =========================== */
 .header{
 	height:40px;
@@ -484,6 +487,7 @@ a.contact-link{
 	left:50%;
 	margin-left:-70px;
 	background:url(../images/header-tab.png)no-repeat;
+	top:10px;
 }
 .header-tab:hover{
 	cursor:pointer;
@@ -493,14 +497,14 @@ a.contact-link{
 	display: table;
 	font-size: 16px;
     font-family: 'whitney_lightregular';
-	top:120px;
+	top:12px;
     position: absolute;
 	left:50%;
 	min-width:600px;
 }
 
 /* =========================== */
-/*  FOOTER */
+/* FOOTER                      */
 /* =========================== */
 .footer{
 	height:40px;
@@ -542,7 +546,7 @@ a.contact-link{
 .signature span.semibold{
 	font-family: 'whitney_semiboldregular';
 }
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1280px) {
 	.social-wrap{
 		right:0px;
 	}
@@ -550,15 +554,19 @@ a.contact-link{
 		font-size:64px;
 	}
 	.section-content{
-		margin-left:5%;
+		margin-left:40px;
+		padding-top:120px;
 	}
 	.wrap{
 		background-size: 321px 495px;
 	}
+	.post-wrap{
+		margin-left:40px;
+	}
 }
 
 /* =========================== */
-/*  NICESCROLL */
+/* NICESCROLL                  */
 /* =========================== */
 .nicescroll-rails{
 	z-index:9999 !important;
