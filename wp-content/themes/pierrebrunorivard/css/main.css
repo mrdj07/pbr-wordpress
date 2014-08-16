@@ -258,6 +258,7 @@ a.video-grid-node{
 	background-color:#000;
     background-size: cover;
 	display:block;
+	background-position:center center;
 }
 .video-box{
 	margin-right:30px;
