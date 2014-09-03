@@ -23,7 +23,6 @@ $datesStr = array(
 					<a id="spectacles-m"href="#" class="navig-item">Spectacles</a>
 					<a id="videos-m" href="#" class="navig-item">Vidéos</a>
 					<a id="nouvelles-m" href="#" class="navig-item">Nouvelles</a>
-					<a id="blog-m" href="#" class="navig-item">Blog</a>
 					<a id="bio-m" href="#" class="navig-item">Bio</a>
 					<a id="gallerie-m" href="#" class="navig-item">Galerie</a>
 					<a id="contact-m" href="#" class="navig-item">Contact</a>
@@ -216,63 +215,6 @@ $datesStr = array(
 
 				<?php else:  ?>
 					<p><?php _e( 'Aucune Nouvelle' ); ?></p>
-				<?php endif; ?>
-			</div>
-		</div>
-		
-		<!-- =============================================== -->
-		<!-- BLOG                                            -->
-		<!-- =============================================== -->
-		<div class="section-content blog">
-			<div class="section-title">Blog</div>
-			<?php $count = 0 ?>
-			<div id="carousel_blog" class="owlcarousel owl-carousel owl-theme">
-				<?php
-				$args = array(
-				'category_name'		=> 'blog',
-				'posts_per_page'	=> -1,
-				'orderby'		=> 'date',
-				'order'			=> 'DESC'
-				);
-				$the_query = new WP_Query( $args ); ?>
-
-				<?php if ( $the_query->have_posts() ) : ?>
-					<?php while ( $the_query->have_posts() ) :
-						$the_query->the_post();
-						$date = get_the_time('U');
-						?>
-						
-						<?php 
-							if($count == 0){
-								echo '<div class="item blog-block">';
-							};
-						?>
-						<div class="blog-row">
-							<div class="blog-title"><?php the_title(); ?>
-							<br><span>
-							<?php echo date('d/m/Y', $date); ?>
-							</span></div>
-							<div class="blog-text"><?php the_excerpt(); ?></div>
-							<a href="<?php the_permalink(); ?>" class="blog-link">Voir plus »</a>
-						</div>
-						<?php $count = $count+1; ?>
-						<?php 
-							if($count == 2){
-								$count = 0;
-								echo '</div>';
-							};
-						?>
-						
-					<?php endwhile; ?>
-					<?php 
-						if($count == 1){
-							echo '</div>';
-						};
-					?>
-					<?php wp_reset_postdata(); ?>
-
-				<?php else:  ?>
-					<p><?php _e( 'Aucun article' ); ?></p>
 				<?php endif; ?>
 			</div>
 		</div>

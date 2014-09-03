@@ -75,22 +75,12 @@ $(document).ready(function(){
 		}
 	}, { offset:50});
 	
-	$('.section-content.blog').waypoint(function(direction) {
-		if (direction == 'down'){
-			$('.navig-item.nouvelles').removeClass('active');
-			$('.navig-item.blog').addClass('active');
-		} else if (direction == 'up'){
-			$('.navig-item.nouvelles').addClass('active');
-			$('.navig-item.blog').removeClass('active');
-		}
-	}, { offset:50});
-	
 	$('.section-content.bio').waypoint(function(direction) {
 		if (direction == 'down'){
-			$('.navig-item.blog').removeClass('active');
+			$('.navig-item.nouvelles').removeClass('active');
 			$('.navig-item.bio').addClass('active');
 		} else if (direction == 'up'){
-			$('.navig-item.blog').addClass('active');
+			$('.navig-item.nouvelles').addClass('active');
 			$('.navig-item.bio').removeClass('active');
 		}
 	}, { offset:50});
