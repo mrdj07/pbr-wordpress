@@ -249,7 +249,7 @@ $datesStr = array(
             <div class="gallery-wrap">
             <?php
             $query_images_args = array(
-                'post_type' => 'attachment', 'post_mime_type' =>'image', 'post_status' => 'inherit', 'posts_per_page' => -1, 'post_parent' => 55
+                'post_type' => 'attachment', 'post_mime_type' =>'image', 'post_status' => 'inherit', 'posts_per_page' => -1, 'category_name' => 'galerie',
             );
 
             $query_images = new WP_Query( $query_images_args );
