@@ -278,7 +278,7 @@ a.video-grid-node{
 
 
 /* Section - Nouvelles */
-.section-content.nouvelles{
+.section-content.blogue{
 	max-width:700px;
 }
 .news-block{
@@ -384,7 +384,7 @@ a.blog-link{
 	font-family: 'whitney_bookregular';
 	font-size:18px;
 }
-/* Section - Gallerie */
+/* Section - Photos */
 .gallery-wrap{
 	margin-top: 40px;
     max-width: 810px;
@@ -478,7 +478,7 @@ a.contact-link{
 	top:0px;
 }
 .single-post .header-wrap{
-	display:none !important;
+	//display:none !important;
 }
 
 .header-tab{

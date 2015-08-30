@@ -22,9 +22,9 @@ $datesStr = array(
 				<div class="navig-wrap">
 					<a id="spectacles-m"href="#" class="navig-item">Spectacles</a>
 					<a id="videos-m" href="#" class="navig-item">Vidéos</a>
-					<a id="nouvelles-m" href="#" class="navig-item">Nouvelles</a>
+					<a id="blogue-m" href="#" class="navig-item">Blogue</a>
 					<a id="bio-m" href="#" class="navig-item">Bio</a>
-					<a id="gallerie-m" href="#" class="navig-item">Galerie</a>
+					<a id="photos-m" href="#" class="navig-item">Photos</a>
 					<a id="contact-m" href="#" class="navig-item">Contact</a>
 					<div class="clear"></div>
 				</div>
@@ -65,8 +65,15 @@ $datesStr = array(
                     'category_name'		=> 'shows',
                     'posts_per_page'	=> -1,
                     'meta_key'		=> 'date',
+                    'meta_query' => array(
+                        array(
+                            'key' => 'date',
+                            'value' => strtotime(date("d-m-Y")),
+                            'compare' => '>=',
+                        )
+                    ),
                     'orderby'		=> 'meta_value_num',
-                    'order'			=> 'DESC'
+                    'order'			=> 'ASC'
                 );
                 $the_query = new WP_Query( $args ); ?>
 
@@ -83,8 +90,10 @@ $datesStr = array(
                             </div>
                             <div class="show-text">
                                 <div class="show-text-title"><?php the_title(); ?></div>
-                                <div class="show-text-location"><?php the_field('place'); ?> - <?php the_field('time'); ?></div>
-                                <a href="<?php the_field('url_ticket'); ?>" class="show-text-link">Info/billeterie</a>
+                                <?php $time = get_field('time'); ?>
+                                <div class="show-text-location"><?php the_field('place'); ?><?php if($time == "00:00" || !empty($time)):?> - <?php the_field('time'); ?><?php endif; ?></div>
+                                <?php $url = get_field('url_ticket'); ?>
+                                <?php if(!empty($url)):?><a href="<?php the_field('url_ticket'); ?>" class="show-text-link">Info/billeterie</a><?php endif; ?>
                             </div>
                             <div class="clear"></div>
                         </div>
@@ -163,10 +172,10 @@ $datesStr = array(
 		</div>
 		
 		<!-- =============================================== -->
-		<!-- NOUVELLES                                       -->
+		<!-- BLOGUE                                          -->
 		<!-- =============================================== -->
-		<div class="section-content nouvelles">
-			<div class="section-title">Nouvelles</div>
+		<div class="section-content blogue">
+			<div class="section-title">Blogue</div>
 			<?php $count = 0 ?>
 			<div id="carousel_blog" class="owlcarousel owl-carousel owl-theme">
 				<?php
@@ -233,10 +242,10 @@ $datesStr = array(
 		</div>
 		
 		<!-- =============================================== -->
-		<!-- GALLERIE                                        -->
+		<!-- PHOTOS                                        -->
 		<!-- =============================================== -->
-		<div class="section-content gallerie">
-			<div class="section-title">Galerie</div>
+		<div class="section-content photos">
+			<div class="section-title">Photos</div>
             <div class="gallery-wrap">
             <?php
             $query_images_args = array(
