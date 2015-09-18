@@ -111,14 +111,40 @@ $(document).ready(function(){
 /* ===================== */
 
 /* Header Tab Toggle */
-function headertabtoggle(){
-	var windowpos = $(window).scrollTop();
-	if (windowpos >= 220) {
-		$(".header-wrap").addClass("active");
-	} else {
-		$(".header-wrap").removeClass("active");
+	function headertabtoggle(){
+		var windowpos = $(window).scrollTop();
+		if (windowpos >= 220) {
+			$(".header-wrap").addClass("active");
+		} else {
+			$(".header-wrap").removeClass("active");
+		}
 	}
-}
+
+	function animateToSection(cropid){
+		switch(cropid){
+			case 'spectacles':
+				$("html,body").animate({scrollTop:$('.section-content.spectacles').offset().top},500);
+				break;
+			case 'videos':
+				$("html,body").animate({scrollTop:$('.section-content.videos').offset().top},500);
+				break;
+			case 'blogue':
+				$("html,body").animate({scrollTop:$('.section-content.blogue').offset().top},500);
+				break;
+			case 'blog':
+				$("html,body").animate({scrollTop:$('.section-content.blog').offset().top},500);
+				break;
+			case 'bio':
+				$("html,body").animate({scrollTop:$('.section-content.bio').offset().top},500);
+				break;
+			case 'photos':
+				$("html,body").animate({scrollTop:$('.section-content.photos').offset().top},500);
+				break;
+			case 'contact':
+				$("html,body").animate({scrollTop:$('.section-content.contact').offset().top},500);
+				break;
+		}
+	}
 
 $(document).ready(function(){
 	if(!$('body').hasClass('page')){
@@ -151,40 +177,25 @@ $(document).ready(function(){
 
 /* Animate ScrollTo */
 $(document).ready(function(){
+
+	if(window.location.hash !== ""){
+		var cropid = window.location.hash.substring(1);
+		animateToSection(cropid);
+	}
+
 	$(".header-tab").click(function(event){
 		$("html,body").animate({scrollTop:0},500);
 	});
 	$(".down-arrow-circle").click(function(event){
 		$("html,body").animate({scrollTop:$('.section-content.spectacles').offset().top},500);
 	});
-	$(".navig-item").click(function(event){
+	$(".home .navig-item").click(function(event){
 		event.preventDefault();
 		var clickid = $(this).attr('id');
 		var cropid = clickid.slice(0,-2);
+		animateToSection(cropid);
 		console.log(cropid);			
-		switch(cropid){
-		case 'spectacles':
-			$("html,body").animate({scrollTop:$('.section-content.spectacles').offset().top},500);
-			break;
-		case 'videos':
-			$("html,body").animate({scrollTop:$('.section-content.videos').offset().top},500);
-			break;
-		case 'blogue':
-			$("html,body").animate({scrollTop:$('.section-content.blogue').offset().top},500);
-			break;
-		case 'blog':
-			$("html,body").animate({scrollTop:$('.section-content.blog').offset().top},500);
-			break;
-		case 'bio':
-			$("html,body").animate({scrollTop:$('.section-content.bio').offset().top},500);
-			break;
-		case 'photos':
-			$("html,body").animate({scrollTop:$('.section-content.photos').offset().top},500);
-			break;
-		case 'contact':
-			$("html,body").animate({scrollTop:$('.section-content.contact').offset().top},500);
-			break;
-		}
+
 	});
 	$(".contactlink").click(function(event){
 		event.preventDefault();
